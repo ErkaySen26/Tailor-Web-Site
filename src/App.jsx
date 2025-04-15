@@ -1,34 +1,32 @@
-import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
+import Appointment from "./pages/Appointment";
+import MyDesigns from "./pages/MyDesigns";
 import "./App.css";
 
 function App() {
   return (
-    <div className="app">
-      <header className="header">
-        <nav>
-          <div className="logo">ERDAL GÜDA</div>
-          <div className="nav-links">
-            <a href="#home">Ana Sayfa</a>
-            <a href="#about">Hakkımızda</a>
-            <a href="#contact">İletişim</a>
-          </div>
-        </nav>
-      </header>
-
-      <main className="main">
-        <section className="hero">
-          <div className="hero-content">
-            <h1>ERDAL GÜDA</h1>
-            <p>Exclusive Tailor - Özel Dikim</p>
-            <button className="cta-button">Randevu Al</button>
-          </div>
-        </section>
-      </main>
-
-      <footer className="footer">
-        <p>&copy; 2024 Erdal Güda - Tüm Hakları Saklıdır</p>
-      </footer>
-    </div>
+    <Router>
+      <div className="app">
+        <Navbar />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/randevu" element={<Appointment />} />
+            <Route path="/my-designs" element={<MyDesigns />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
